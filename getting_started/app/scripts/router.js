@@ -1,0 +1,3 @@
+GettingStarted.Router.map(function () {
+  
+});
