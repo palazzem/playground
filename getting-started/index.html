@@ -18,7 +18,7 @@
                 {{#each itemController="todo"}}
                     <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
                         {{#if isEditing}}
-                            <input class="edit">
+                            {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
                         {{else}}
                             {{input type="checkbox" class="toggle" checked=isCompleted}}
                             <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
@@ -67,8 +67,14 @@
 <script src="js/application.js"></script>
 <script src="js/router.js"></script>
 
+<!-- Models -->
 <script src="js/models/todo.js"></script>
+
+<!-- Controllers -->
 <script src="js/controllers/todo_controller.js"></script>
 <script src="js/controllers/todos_controller.js"></script>
+
+<!-- Custom components -->
+<script src="js/views/edit_todo.js"></script>
 </body>
 </html>
