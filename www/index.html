@@ -10,6 +10,7 @@
     <script src="lib/js/ionic.bundle.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/storage.js"></script>
 
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -19,7 +20,10 @@
       <!-- Center content -->
       <ion-pane ion-side-menu-content>
         <ion-header-bar class="bar-dark">
-          <h1 class="title">Todo</h1>
+          <button class="button button-icon" ng-click="toggleProjects()">
+            <i class="icon ion-navicon"></i>
+          </button>
+          <h1 class="title">{{activeProject.title}}</h1>
 
           <!-- New Task button-->
           <button class="button button-icon" ng-click="newTask()">
@@ -29,7 +33,7 @@
 
         <ion-content has-header="true">
           <ion-list>
-            <ion-item ng-repeat="task in tasks">
+            <ion-item ng-repeat="task in activeProject.tasks">
               {{task.title}}
             </ion-item>
           </ion-list>
@@ -38,9 +42,19 @@
 
       <!-- Left menu -->
       <ion-side-menu side="left">
-        <div class="bar bar-header bar-dark">
+        <ion-header-bar class="bar-dark">
           <h1 class="title">Projects</h1>
-        </div>
+          <button class="button button-icon" ng-click="newProject()">
+            <i class="icon ion-plus"></i>
+          </button>
+        </ion-header-bar>
+        <ion-content has-header="true" scroll="false">
+          <ion-list>
+            <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject == project}">
+              {{project.title}}
+            </ion-item>
+          </ion-list>
+        </ion-content>
       </ion-side-menu>
     </ion-side-menus>
   </body>

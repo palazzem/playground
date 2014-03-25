@@ -3,19 +3,19 @@
 
 var todoApp = angular.module('todo');
 
-todoApp.controller('TodoCtrl', function($scope, $ionicModal) {
-  $scope.tasks = [
-    { title: 'Coding' },
-    { title: 'Watch Walking Dead' },
-    { title: 'Play with Starbound' },
-    { title: 'Get milk' },
-    { title: 'Finish read Secrets and Lies book (Schneier)' }
-  ];
+todoApp.controller('TodoCtrl', function($scope, $ionicModal, $ionicSideMenuDelegate, Projects) {
+  // Load or initialize projects
+  $scope.projects = Projects.all();
+
+  // Grab the last active, or the first project
+  $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
 
   // Empty object
   $scope.task = {};
 
-  // Create and load the Modal
+  // Animations and modals
+  // ---------------------
+
   $ionicModal.fromTemplateUrl('views/modal.html', function(modal) {
     $scope.taskModal = modal;
   }, {
@@ -23,10 +23,16 @@ todoApp.controller('TodoCtrl', function($scope, $ionicModal) {
     animation: 'slide-in-up'
   });
 
-  // Called when the form is submitted
+  $scope.toggleProjects = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
+  // Task management
+  // ---------------
+
   $scope.createTask = function(task) {
     if (typeof task.title !== 'undefined' && task.title) {
-      $scope.tasks.push({
+      $scope.activeProject.tasks.push({
         title: task.title
       });
       $scope.taskModal.hide();
@@ -34,13 +40,34 @@ todoApp.controller('TodoCtrl', function($scope, $ionicModal) {
     }
   };
 
-  // Open our new task modal
   $scope.newTask = function() {
     $scope.taskModal.show();
   };
 
-  // Close the new task modal
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
+  };
+
+  // Project management
+  // ------------------
+
+  var createProject = function(projectTitle) {
+    var newProject = Projects.newProject(projectTitle);
+    $scope.projects.push(newProject);
+    Projects.save($scope.projects);
+    $scope.selectProject(newProject, $scope.projects.length - 1);
+  }
+
+  $scope.newProject = function() {
+    var projectTitle = prompt('Project name');
+    if (projectTitle) {
+      createProject(projectTitle);
+    }
+  };
+
+  $scope.selectProject = function(project, index) {
+    $scope.activeProject = project;
+    Projects.setLastActiveIndex(index);
+    $ionicSideMenuDelegate.toggleLeft();
   };
 });
