@@ -31,12 +31,15 @@ todoApp.controller('TodoCtrl', function($scope, $ionicModal, $ionicSideMenuDeleg
   // ---------------
 
   $scope.createTask = function(task) {
-    if (typeof task.title !== 'undefined' && task.title) {
+    if ($scope.activeProject && typeof task.title !== 'undefined' && task.title) {
       $scope.activeProject.tasks.push({
         title: task.title
       });
       $scope.taskModal.hide();
       task.title = '';
+
+      // Persist all projects (inefficient)
+      Projects.save($scope.projects);
     }
   };
 
