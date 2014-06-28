@@ -11,5 +11,6 @@
     "core-elements": "Polymer/core-elements#master",
     "paper-elements": "Polymer/paper-elements",
     "font-roboto": "Polymer/font-roboto"
+    "core-localstorage": "Polymer/local-storage"
   }
 }
