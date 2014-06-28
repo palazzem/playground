@@ -32,3 +32,19 @@
   background-color: #526E9C;
   color: #fff;
 }
+
+paper-fab {
+  background-color: #e0a30b;
+  position: absolute !important;
+  bottom: -27px;
+  right: 1em;
+  z-index: 10;
+}
+
+.card {
+  width: 300px;
+  background-color: #fff;
+  padding: 1em;
+  margin: 1em;
+  position: relative;
+}
