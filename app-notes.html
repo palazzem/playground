@@ -20,11 +20,11 @@
 <link rel="import" href="bower_components/paper-input/paper-input.html">
 <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
 
-<polymer-element name="codelab-app">
+<polymer-element name="app-notes">
   <template>
     <link rel="stylesheet" href="styles.css">
 
-    <core-localstorage id="storage" name="codelab-app-storage" value="{{data}}"></core-localstorage>
+    <core-localstorage id="storage" name="app-storage" value="{{data}}"></core-localstorage>
 
     <core-drawer-panel id="drawerPanel" responsiveWidth="600px">
       <core-header-panel drawer mode="waterfall">
@@ -81,7 +81,7 @@
     </core-drawer-panel>
   </template>
   <script>
-    Polymer('codelab-app', {
+    Polymer('app-notes', {
       fontSize: 14,
       fontSizeChanged: function() {
         var cards = this.shadowRoot.querySelectorAll('.card')

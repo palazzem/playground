@@ -1,10 +1,12 @@
 {
-  "name": "Taskr",
-  "description": "",
+  "name": "PolymerNotes",
+  "description": "Playground for polymer components. It's a simple notebook",
   "homepage": "",
   "keywords": [
+    "polymer",
+    "notes"
   ],
-  "author": "",
+  "author": "Emanuele Palazzetti",
   "private": true,
   "dependencies": {
     "polymer": "Polymer/polymer#master",
