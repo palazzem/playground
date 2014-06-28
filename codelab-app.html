@@ -7,8 +7,13 @@
 
 <link rel="import" href="bower_components/font-roboto/roboto.html">
 <link rel="import" href="bower_components/core-icons/core-icons.html">
+
 <link rel="import" href="bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="bower_components/core-item/core-item.html">
 
 <link rel="import" href="bower_components/paper-input/paper-input.html">
 <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
@@ -22,6 +27,24 @@
     <core-drawer-panel id="drawerPanel" responsiveWidth="600px">
       <core-header-panel drawer>
         <core-toolbar>Menu</core-toolbar>
+        <core-item>
+          <label flex>Fade out selected</label>
+          <paper-toggle-button class="blue" checked="{{fadeSelected}}"></paper-toggle-button>
+        </core-item>
+        <core-item>
+          <label flex>Delete selected</label>
+          <paper-icon-button icon="delete" on-click="{{delete}}"></paper-icon-button>
+        </core-item>
+        <core-item>
+          <div central horizontal layout>
+            <div>Font size</div>
+            <paper-slider value="{{fontSize}}" max="32" editable></paper-slider>
+          </div>
+        </core-item>
+        <core-item>
+          <paper-button raisedButton class="colored" label="reset" on-click="{{reset}}"></paper-button>
+        </core-item>
+        <paper-toast id="toast" class="capsule" text="Settings have been reset!" duration="800"></paper-toast>
       </core-header-panel>
 
       <core-header-panel main>
@@ -33,7 +56,7 @@
           <paper-fab icon="icons:add" on-click="{{showNewNote}}"></paper-fab>
         </core-toolbar>
 
-        <div class="content">
+        <div class="content" data-fade-selected="{{fadeSelected}}">
           <paper-input id="newNoteInput"
             floatingLabel
             label="Add new note"
@@ -42,7 +65,7 @@
           </paper-input>
 
           <template repeat="{{data}}">
-            <div center horizontal layout class="item">
+            <div center horizontal layout class="item" data-done="{{done}}">
               <paper-checkbox on-change="{{dataChanged}}" checked="{{done}}"></paper-checkbox>
               <div flex class="card">
                 <p>{{body}}</p>
@@ -55,6 +78,18 @@
   </template>
   <script>
     Polymer('codelab-app', {
+      fontSize: 14,
+      fontSizeChanged: function() {
+        var cards = this.shadowRoot.querySelectorAll('.card')
+        for (var i = 0; i < cards.length; i++) {
+          cards[i].style.fontSize = this.fontSize + 'px';
+        }
+      },
+      reset: function() {
+        this.fontSize = 14;
+        this.fadeSelected = false;
+        this.$.toast.show();
+      },
       ready: function() {
         this.$.newNoteInput.style.display = 'none';
       },
@@ -80,6 +115,11 @@
           this.$.newNoteInput.style.display = 'none';
           this.$.newNoteInput.value = null;
         }
+      },
+      delete: function() {
+        this.data = this.data.filter(function(item) {
+          return !item.done;
+        });
       }
     });
   </script>

@@ -48,3 +48,14 @@ paper-fab {
   margin: 1em;
   position: relative;
 }
+
+*[data-fade-selected="true"] .item[data-done="true"] {
+  opacity: 0.3;
+}
+
+paper-button[raisedButton].colored {
+  width: 100%;
+  background: #4285f4;
+  color: #fff;
+  fill: #fff;
+}
