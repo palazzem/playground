@@ -47,3 +47,6 @@ coverage.xml
 
 *.log
 *.sqlite3
+
+# IDEs
+.idea/
