@@ -48,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_rq.urls'
+ROOT_URLCONF = 'rq_test.urls'
 
-WSGI_APPLICATION = 'django_rq.wsgi.application'
+WSGI_APPLICATION = 'rq_test.wsgi.application'
 
 
 # Database
