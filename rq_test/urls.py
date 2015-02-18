@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^django-rq/', include('django_rq.urls')),
     url(r'^enqueue/', SimpleView.as_view()),
 )
