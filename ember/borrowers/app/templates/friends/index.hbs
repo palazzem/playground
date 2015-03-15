@@ -4,8 +4,10 @@
 <ul>
     {{#each friend in model}}
         <li>
-            {{link-to friend.fullName 'friends.show' friend}}
+            {{link-to friend.fullName 'friends.show' friend}} <a href="#" {{action "delete" friend}}>Delete</a>
         </li>
     {{/each}}
 </ul>
+
+{{link-to "Add a friend" "friends.new"}}
 
