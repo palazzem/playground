@@ -1,0 +1,20 @@
+{
+  "name": "testem-playground",
+  "version": "0.0.0",
+  "description": "Testem' all!",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/testem"
+  },
+  "author": "Emanuele Palazzetti",
+  "license": "BSD",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "testem": "^0.8.2"
+  }
+}
