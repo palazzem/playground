@@ -17,7 +17,7 @@ Just:
 Execute testing
 ---------------
 
-Before each run, *testem* launches `Gulp` ``transpile`` task that transpiles ES5
+Before each run, *testem* launches `Gulp`_ ``transpile`` task that transpiles ES5
 compliant code in the ``build/`` folder. When the task is done, *testem* will launch
 the test runner as usual and you can easily change your ES6 code while the ``transpile``
 task is launched automatically after any changes.
