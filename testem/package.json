@@ -1,0 +1,17 @@
+{
+  "name": "testem-playground",
+  "version": "0.0.0",
+  "description": "Testem' all!",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emanuele Palazzetti",
+  "license": "BSD",
+  "devDependencies": {
+    "chai": "^2.2.0"
+  }
+}
