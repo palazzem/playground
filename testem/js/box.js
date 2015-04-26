@@ -1,23 +1,17 @@
-(function (root) {
-    "use strict";
-
-    var Box = function () {
+class Box {
+    constructor() {
         this.content = [];
-
-        Object.defineProperty(this, "size", {
-            get: function () {
-                return this.content.length;
-            }
-        });
-    };
-
-    Box.prototype.add = function (object) {
-        this.content.push(object);
-    };
-
-    Box.prototype.throwAway = function () {
-        this.content.length = 0
     }
 
-    root.Box = Box;
-})(window);
+    get size() {
+        return this.content.length;
+    }
+
+    add(object) {
+        this.content.push(object);
+    }
+
+    throwAway() {
+        this.content.length = 0;
+    }
+}
