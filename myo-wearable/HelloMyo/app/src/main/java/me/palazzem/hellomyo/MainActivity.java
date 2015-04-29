@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.thalmic.myo.Hub;
 import com.thalmic.myo.scanner.ScanActivity;
 
-public class MainActivity extends AppCompatActivity {
+import me.palazzem.hellomyo.myo.DeviceListener;
+import me.palazzem.hellomyo.myo.GestureRecognition;
+
+public class MainActivity extends AppCompatActivity implements GestureRecognition {
     private Hub mHub;
+    private TextView mRecognizedGesture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mRecognizedGesture = (TextView) findViewById(R.id.recognized_gesture);
 
         // Hub initialization (manages Myo instances)
         mHub = Hub.getInstance();
@@ -31,9 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
         // disabling data usage send
         mHub.setSendUsageData(false);
-        mHub.addListener(new DeviceListener());
+        mHub.addListener(new DeviceListener(this));
     }
 
+    @Override
+    public void onPoseRecognition(int imageDrawable) {
+        // change the ImageView source
+        mRecognizedGesture.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, imageDrawable);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
