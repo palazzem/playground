@@ -1,4 +1,4 @@
-package me.palazzem.hellomyo;
+package me.palazzem.hellomyo.myo;
 
 import android.util.Log;
 
@@ -8,7 +8,16 @@ import com.thalmic.myo.Myo;
 import com.thalmic.myo.Pose;
 import com.thalmic.myo.XDirection;
 
+import me.palazzem.hellomyo.Constants;
+import me.palazzem.hellomyo.R;
+
 public class DeviceListener extends AbstractDeviceListener {
+    private GestureRecognition mCallback;
+
+    public DeviceListener(GestureRecognition callback) {
+        mCallback = callback;
+    }
+
     @Override
     public void onAttach(Myo myo, long timestamp) {
         super.onAttach(myo, timestamp);
@@ -27,21 +36,22 @@ public class DeviceListener extends AbstractDeviceListener {
             case DOUBLE_TAP:
                 // double tap works as a locker/unlocker
                 myo.lock();
+                mCallback.onPoseRecognition(R.drawable.double_tap);
                 break;
             case REST:
-                Log.d(Constants.TAG_LOG, "'cmon!");
+                mCallback.onPoseRecognition(R.drawable.double_tap);
                 break;
             case FIST:
-                Log.d(Constants.TAG_LOG, "Fist!");
+                mCallback.onPoseRecognition(R.drawable.fist);
                 break;
             case FINGERS_SPREAD:
-                Log.d(Constants.TAG_LOG, "Hand!");
+                mCallback.onPoseRecognition(R.drawable.fingers_spread);
                 break;
             case WAVE_IN:
-                Log.d(Constants.TAG_LOG, "Left!");
+                mCallback.onPoseRecognition(R.drawable.wave_in);
                 break;
             case WAVE_OUT:
-                Log.d(Constants.TAG_LOG, "Right!");
+                mCallback.onPoseRecognition(R.drawable.wave_out);
                 break;
             case UNKNOWN:
                 Log.d(Constants.TAG_LOG, "Unrecognized gesture :(");
