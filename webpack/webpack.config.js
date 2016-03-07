@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     debug: true,
@@ -6,11 +7,16 @@ module.exports = {
     output: {
         path: 'builds',
         filename: 'main.js',
+        publicPath: '/builds/',
     },
     devtool: 'source-map',
-    devServer: {
-        contentBase: "./client"
-    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'main',
+            children: true,
+            minChunks: 2,
+        }),
+    ],
     module: {
         loaders: [
             {
