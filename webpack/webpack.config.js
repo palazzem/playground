@@ -1,10 +1,15 @@
 var path = require('path');
 
 module.exports = {
+    debug: true,
     entry: './client/js',
     output: {
         path: 'builds',
-        filename: 'bundle.js',
+        filename: 'main.js',
+    },
+    devtool: 'source-map',
+    devServer: {
+        contentBase: "./client"
     },
     module: {
         loaders: [
@@ -17,6 +22,15 @@ module.exports = {
                     presets: ['es2015'],
                 },
             },
+            {
+                loaders: ['style', 'css', 'sass'],
+                include: path.resolve(__dirname, 'client', 'sass'),
+                test: /\.scss$/,
+            },
+            {
+                loader: 'html',
+                test: /\.html$/
+            }
         ],
-    }
+    },
 }
