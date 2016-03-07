@@ -1,0 +1,11 @@
+{
+  "name": "webpack-experiment",
+  "version": "0.0.0",
+  "description": "Just a webpack experiment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emanuele Palazzetti <hello@palazzetti.me>",
+  "license": "BSD-2-Clause"
+}
