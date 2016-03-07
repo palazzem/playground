@@ -10,5 +10,8 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "jquery": "^2.2.1"
   }
 }
