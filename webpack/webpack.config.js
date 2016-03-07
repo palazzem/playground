@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src',
+    entry: './client/js',
     output: {
         path: 'builds',
         filename: 'bundle.js',
@@ -10,7 +10,7 @@ module.exports = {
         loaders: [
             {
                 loader: 'babel-loader',
-                include: path.resolve(__dirname, 'src'),
+                include: path.resolve(__dirname, 'client', 'js'),
                 test: /\.js$/,
                 query: {
                     plugins: ['transform-runtime'],
