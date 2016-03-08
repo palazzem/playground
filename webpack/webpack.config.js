@@ -60,23 +60,33 @@ module.exports = {
     module: {
         loaders: [
             {
+                test: /\.js$/,
                 loader: 'babel-loader',
                 include: path.resolve(__dirname, 'client', 'js'),
-                test: /\.js$/,
                 query: {
                     plugins: ['transform-runtime'],
                     presets: ['es2015'],
                 },
             },
             {
+                test: /\.scss$/,
                 loader: extractCSS.extract('style', 'css!sass'),
                 include: path.resolve(__dirname, 'client', 'sass'),
-                test: /\.scss$/,
             },
             {
+                test: /\.html$/,
                 loader: 'html',
-                test: /\.html$/
-            }
+            },
+            {
+                test: /\.(png|gif|jpe?g|svg)$/i,
+                loader: 'url',
+                query: {
+                    // if the image is lesser than ~10kb, inline it
+                    // otherwise fallback to the file-loader and
+                    // reference it
+                    limit: 10000,
+                },
+            },
         ],
     },
 }
