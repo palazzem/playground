@@ -1,7 +1,5 @@
 import $ from 'jquery';
-import template from '../templates/button.html';
 import Mustache from 'mustache';
-import '../sass/components/button.scss';
 
 class Button {
     constructor(link) {

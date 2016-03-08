@@ -68,16 +68,21 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: path.resolve(__dirname, 'client', 'js'),
+                exclude: path.resolve(__dirname, 'node_modules'),
                 query: {
                     plugins: ['transform-runtime'],
                     presets: ['es2015'],
                 },
             },
             {
+                test: /\.js$/,
+                loader: 'baggage?[file].html=template&[file].scss',
+                exclude: path.resolve(__dirname, 'node_modules'),
+            },
+            {
                 test: /\.scss$/,
                 loader: extractCSS.extract('style', 'css!sass'),
-                include: path.resolve(__dirname, 'client', 'sass'),
+                exclude: path.resolve(__dirname, 'node_modules'),
             },
             {
                 test: /\.html$/,
