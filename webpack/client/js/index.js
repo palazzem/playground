@@ -1,3 +1,5 @@
+import '../sass/main.scss';
+
 if (document.querySelectorAll('a').length > 0) {
     require.ensure([], () => {
         const Button = require('./button').default;

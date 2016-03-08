@@ -1,9 +1,13 @@
 var path = require('path');
 var webpack = require('webpack');
 var CleanPlugin = require('clean-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var production = process.env.NODE_ENV === 'production';
 
+var extractCSS = new ExtractTextPlugin('bundle.css', {allChunks: true});
+
 var plugins = [
+    extractCSS,
     new webpack.optimize.CommonsChunkPlugin({
         name: 'main',
         children: true,
@@ -65,7 +69,7 @@ module.exports = {
                 },
             },
             {
-                loaders: ['style', 'css', 'sass'],
+                loader: extractCSS.extract('style', 'css!sass'),
                 include: path.resolve(__dirname, 'client', 'sass'),
                 test: /\.scss$/,
             },
