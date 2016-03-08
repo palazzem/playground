@@ -56,8 +56,14 @@ module.exports = {
         publicPath: '/builds/',
     },
     plugins: plugins,
-    devtool: production ? false : 'source-map',
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: 'xo-loader',
+                include: path.resolve(__dirname, 'client', 'js'),
+            },
+        ],
         loaders: [
             {
                 test: /\.js$/,
@@ -88,5 +94,10 @@ module.exports = {
                 },
             },
         ],
+    },
+    devtool: production ? false : 'source-map',
+    xo: {
+        envs: ["browser"],
+        space: 4,
     },
 }
