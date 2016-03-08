@@ -1,5 +1,7 @@
-===============
-Button tutorial
-===============
+================
+Webpack tutorial
+================
 
-Following the button tutorial available on: http://blog.madewithlove.be/post/webpack-your-bags/
+Following the "almost official" tutorial available on: http://blog.madewithlove.be/post/webpack-your-bags/
+
+It includes a basic (but reasonable) Webpack configuration.
