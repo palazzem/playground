@@ -97,10 +97,7 @@ CACHES = {
 # channels
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'asgi_redis.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [env('CACHE_URL', CACHES_DEFAULT)],
-        },
+        'BACKEND': 'asgiref.inmemory.ChannelLayer',
         'ROUTING': 'chat.routing.channel_routing',
     }
 }
