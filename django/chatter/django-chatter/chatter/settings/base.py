@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'channels',
     'chat',
 )
 
@@ -90,6 +91,17 @@ CACHES = {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         },
         'TIMEOUT': 3600
+    }
+}
+
+# channels
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [env('CACHE_URL', CACHES_DEFAULT)],
+        },
+        'ROUTING': 'chat.routing.channel_routing',
     }
 }
 
