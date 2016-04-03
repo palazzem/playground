@@ -1,5 +1,5 @@
 # base stuff
-channels
+channels<0.10
 django
 django-getenv
 django-redis

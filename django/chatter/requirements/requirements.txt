@@ -8,7 +8,7 @@ apipkg==1.4               # via execnet
 asgi-redis==0.10.0
 asgiref==0.11.2           # via asgi-redis, channels, daphne
 autobahn==0.13.0          # via daphne
-channels==0.10.3
+channels==0.9.5
 contextlib2==0.5.1        # via raven
 coverage==4.0.3
 daphne==0.10.1
