@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
 
-# Create your views here.
+from .models import Room
+
+
+class ChatRoomView(DetailView):
+    model = Room
+    slug_field = 'name'
+    template_name = 'chat/room.html'
