@@ -1,0 +1,8 @@
+[run]
+source = django-chatter
+omit =
+    */migrations/*
+    */tests/*
+    django-chatter/manage.py
+    django-chatter/chatter/wsgi.py
+    django-chatter/chatter/settings/production.py
