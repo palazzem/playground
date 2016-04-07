@@ -1,7 +1,8 @@
 {
     "variables": {
         "aws_access_key": "",
-        "aws_secret_key": ""
+        "aws_secret_key": "",
+        "do_api_token": ""
     },
     "builders": [{
         "type": "amazon-ebs",
@@ -12,6 +13,13 @@
         "instance_type": "m1.small",
         "ssh_username": "ubuntu",
         "ami_name": "packer example {{timestamp}}"
+    },{
+        "type": "digitalocean",
+        "droplet_name": "packer-example",
+        "api_token": "{{user `do_api_token`}}",
+        "image": "ubuntu-14-04-x64",
+        "region": "nyc3",
+        "size": "512mb"
     }],
     "provisioners": [{
         "type": "shell",
