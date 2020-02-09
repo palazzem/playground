@@ -31,7 +31,7 @@
   "dependencies": {
     "babel-polyfill": "^6.6.1",
     "babel-runtime": "^6.6.1",
-    "jquery": "^2.2.1",
+    "jquery": "^3.4.1",
     "mustache": "^2.2.1"
   }
 }
