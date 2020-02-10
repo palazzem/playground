@@ -1,0 +1,12 @@
+[package]
+name = "guessing_game"
+version = "0.1.0"
+authors = ["Manu Palazzetti <emanuele.palazzetti@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+rand = "0.7.3"
+
+[profile.release]
+lto = true
+codegen-units = 1
