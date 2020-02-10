@@ -5,3 +5,7 @@ authors = ["Manu Palazzetti <emanuele.palazzetti@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+
+[profile.release]
+lto = true
+codegen-units = 1
