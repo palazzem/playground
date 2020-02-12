@@ -13,4 +13,9 @@ fn main() {
 
     // Float representation: 0.2 + 0.1 = 0.30000000000000004
     println!("0.2 + 0.1 = {}", 0.2 + 0.1);
+
+    // Tuple representation, using a pattern matching
+    let tup = (500, "Hello!", 60.5);
+    let (x, y, z) = tup;
+    println!("Tuple: {}, {}, {}", x, y, z);
 }
